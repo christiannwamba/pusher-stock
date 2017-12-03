@@ -2,6 +2,7 @@ class App {
   constructor() {
     this.pusher = null;
     this.chart = null;
+    this.lowestPrice = 505;
     this.initializeChart();
     this.initializePusher();
   }
@@ -28,10 +29,30 @@ class App {
     this.chart.data.labels.push(data.Timestamp.split(' ')[1].split('.')[0]);
     // this.chart.data.datasets[0].data.push(data.Price);
     this.chart.data.datasets[0].data.push(data.Price);
-    // this.chart.data.datasets.forEach(dataset => {
-    //   dataset.data.push(data);
-    // });
+    document.getElementById('price').innerHTML = data.Price;
+
+    this.chart.data.datasets.forEach(dataset => {
+      var currentPrice = document.getElementById('price');
+      var tag = currentPrice.innerHTML;
+      tag = data.Price;
+      this.flashColor(this.lowestPrice, tag, currentPrice);
+    });
     this.chart.update();
+  }
+
+  flashColor(price, tag, currentPrice) {
+    let color = " ";
+
+    if (tag > price ) {
+      color = "green";
+    } else if(tag == price){
+      color = "blue";
+    } else {
+      color = "red";
+    }
+
+    currentPrice.style.color = color;
+    currentPrice.style.fontWeight = "bolder";
   }
 
   initializeChart() {

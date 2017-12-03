@@ -1,18 +1,42 @@
 <html>
 
 <head>
-  <style>
-    .chart-container {
-      width: 1000px;
-      height: 100%;
-    }
-  </style>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
 <body>
-  <div class="chart-container">
-    <canvas id="chart"></canvas>
-  </div>
+  <div class="container">
+    <div class="chart-container row">
+        <div class="col-md-8">
+            <div class="">
+                <canvas id="chart"></canvas>
+              </div>
+        </div>
+    
+        <div class="col-md-4">
+            <div class="table-container">
+                <h2>Trending Tickers</h2>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th> Name</th>
+                        <th> Price</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>GOOG</td>
+                        <td id="price"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+              
+            </div>
+        </div>
+      </div>
+</div>
+
   <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
   <script src="app.js"></script>
